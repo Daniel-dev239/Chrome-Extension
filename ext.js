@@ -47,8 +47,8 @@ function renderLeads(myLeads){
     
        ul element when you double click so your renderLeads(myLeads) call on line 41 was just 
        rendering an empty array which means that the for loop will not run since the condition
-       i < myLeads.length will fail , (myLeads is empty) . So an easy work around is to craete a 
-       condition around the loop to run only if myLeads is not otherwise the ul element 
+       i < myLeads.length will fail , (myLeads is empty) . So an easy work around is to create a 
+       condition around the loop to run only if myLeads is not empty otherwise the ul element 
        should be emptied, ulEl.innerHTML = ""
      */
     if(myLeads.length){
