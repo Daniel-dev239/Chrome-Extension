@@ -44,25 +44,38 @@ deleteBtn.addEventListener("dblclick", function(){
 
 function renderLeads(myLeads){
     let listItems = ""
-    for(let i = 0; i < myLeads.length; i++){
-        // Makes every input to be represented in an a list
-        //listItems += "<li><a target ='_blank' href = '"+ myLeads[i] +"'>" + myLeads[i] + " " + "</a></li>"
-        listItems += `<li>
-                            <a target ='_blank' href = ${myLeads[i]} >
-                             ${myLeads[i]} 
-                            </a>
-                        </li>`
-        
-        console.log(listItems)
-        // represents the HTML elements
-        ulEl.innerHTML = listItems  
-     
-}
+    /* So the issue with the delete button not working was you where not updating the 
+    
+       ul element when you double click so your renderLeads(myLeads) call on line 41 was just 
+       rendering an empty array which means that the for loop will not run since the condition
+       i < myLeads.length will fail , (myLeads is empty) . So an easy work around is to create a 
+       condition around the loop to run only if myLeads is not empty otherwise the ul element 
+       should be emptied, ulEl.innerHTML = ""
+     */
+    if(myLeads.length){
+        for(let i = 0; i < myLeads.length; i++){
+            // Makes every input to be represented in an a list
+            //listItems += "<li><a target ='_blank' href = '"+ myLeads[i] +"'>" + myLeads[i] + " " + "</a></li>"
+            listItems += `<li>
+                                <a target ='_blank' href = ${myLeads[i]} >
+                                 ${myLeads[i]} 
+                                </a>
+                            </li>`
+            
+            console.log(listItems)
+            // represents the HTML elements
+            ulEl.innerHTML = listItems  
+         
+    }
+
+    }else{
+        ulEl.innerHTML = ""
+    }
 }
 //localStorage.setItem("myLeads", "www.oct.com")
 console.log(localStorage.getItem("myLeads"))
 
-
+console.log(inputEl.value);
 
 inputBtn.addEventListener("click", function(){
     //collects value from the field 
